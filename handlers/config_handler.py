@@ -12,6 +12,7 @@ DEFAULT_CONFIG = {
     "log_bind_port": 19994,
     "log_bind_host": "127.0.0.1",
     "api_key": None,
+    "api_rate_limit_delay_seconds": 5
 }
 
 # Let's make sure we copy default config by value, not reference. So that it remains unmodified.

@@ -1,3 +1,5 @@
+from __future__ import print_function
+import sys
 from requests import Response
 
 from handlers.log_handler import create_logger
@@ -45,6 +47,15 @@ def logprint_response(response: Response):
     print_response(response)
 
 
-def logprint(anything: any):
-    log.info(anything)
-    print(anything)
+def logprint(*args, **kwargs):
+    log.info(*args, **kwargs)
+    print(*args, **kwargs)
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+
+def logprint_error(*args, **kwargs):
+    log.error(*args, **kwargs)
+    eprint(*args, **kwargs)
