@@ -19,6 +19,7 @@ puush API documentation
     - i = file identifier - on puush.me, is SEQUENTIAL
  - Response (success): `0`
  - Response (failure): `-1`
+ - Response (failure, ID does not exist): `-2`
 
 ###History
  - URL: `/api/hist`
