@@ -15,7 +15,8 @@ class PuushEntry:
         self.unknown = unknown
 
     def __str__(self):
-        return "{},{},{},{},{},{}".format(
+        return "<{}: identifier={}, date={},url={}, filename={}, views={}, unknown={}>".format(
+            self.__class__.__name__,
             self.identifier,
             self.date,
             self.url,
