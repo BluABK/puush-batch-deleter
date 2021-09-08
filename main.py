@@ -7,7 +7,7 @@ from handlers.log_handler import create_logger
 
 log = create_logger(__name__)
 
-API = "https://puush.me/api/"
+API = "https://puush.me/api"
 AUTH_API = "{}/auth".format(API)
 HISTORY_API = "{}/hist".format(API)
 DELETION_API = "{}/del".format(API)
@@ -15,6 +15,14 @@ THUMBNAIL_API = "{}/thumb".format(API)
 UPLOAD_API = "{}/up".format(API)
 
 config = load_config()
+
+
+def log_request(url: str, method="POST"):
+    log.info("Sent {method} request to {url}".format(method=method, url=url))
+
+
+def print_request(url: str, method="POST"):
+    print("Sent {method} request to {url}".format(method=method, url=url))
 
 
 def log_response(response: Response):
@@ -40,11 +48,16 @@ def print_response(response: Response):
 
 
 def get_history():
-    response = requests.post(HISTORY_API, data={"k": config["api_key"]})
 
-    log.debug("Response dict:\n{}".format(response.__dict__))
+    response = requests.post(HISTORY_API, data={"k": config["api_key"]})
+    log_request(HISTORY_API)
+    print_request(HISTORY_API)
+
     log_response(response)
     print_response(response)
+    log.debug("Response dict:\n{}".format(response.__dict__))
+
+    log.info(response.text)
 
 
 if __name__ == '__main__':
